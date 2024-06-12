@@ -21,6 +21,10 @@ The Swagger UI can be found at: [Swagger UI](http://localhost:8080/swagger-ui/in
 
 ## Notes
 
-I'm afraid I haven't had time within the 3 hours to unit test my code or implement logging.
+Because of the time constraint - I made a couple of decisions:
 
-Also, I made the decison not to implement a `service` package because of the time constraints, but would normally have done this.
+- I decided not to consider user accounts (and therefore also did not need to consider user authentication)
+- I decided not to implement a `service` package, but would normally have done this.
+
+I'm afraid I also haven't had time to unit test my code or implement logging.
+ 
