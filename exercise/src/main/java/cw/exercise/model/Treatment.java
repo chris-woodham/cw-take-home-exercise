@@ -11,11 +11,13 @@ public class Treatment {
     private Questions consultationQuestions;
     private List<Treatment> relatedTreatments;
     private List<Condition> conditionsTreated;
+    private TreatmentRisk treatmentRisk;
 
     public Treatment() {}
 
     public Treatment(String scientificName, String commonName, String description, int dailyDoseMg,
-            Questions consultationQuestions, List<Treatment> relatedTreatments, List<Condition> conditionsTreated) {
+            Questions consultationQuestions, List<Treatment> relatedTreatments, List<Condition> conditionsTreated,
+            TreatmentRisk treatmentRisk) {
         this.scientificName = scientificName;
         this.commonName = commonName;
         this.description = description;
@@ -23,6 +25,7 @@ public class Treatment {
         this.consultationQuestions = consultationQuestions;
         this.relatedTreatments = relatedTreatments;
         this.conditionsTreated = conditionsTreated;
+        this.treatmentRisk = treatmentRisk;
     }
 
     public String getScientificName() {
@@ -57,6 +60,10 @@ public class Treatment {
         return conditionsTreated;
     }
 
+    public TreatmentRisk getTreatmentRisk() {
+        return treatmentRisk;
+    }
+
     // In this model the "scientificName" of a Condition is its unique identifier
     // And therefore equals and hashCode are overridden using "this.scientificName"
     @Override
@@ -87,7 +94,7 @@ public class Treatment {
     @Override
     public String toString() {
         return "Treatment [scientificName=" + scientificName + ", commonName=" + commonName + ", description="
-                + description + ", dailyDoseMg=" + dailyDoseMg + "]";
+                + description + ", dailyDoseMg=" + dailyDoseMg + ", treatmentRisk= " + treatmentRisk + "]";
     }
 
 }
