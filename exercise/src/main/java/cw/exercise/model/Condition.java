@@ -41,6 +41,10 @@ public class Condition {
         return potentialTreatments;
     }
 
+    public void setPotentialTreatments(List<Treatment> potentialTreatments) {
+        this.potentialTreatments = potentialTreatments;
+    }
+
     // In this model the "scientificName" of a Condition is its unique identifier
     // And therefore equals and hashCode are overridden using "this.scientificName"
     @Override
