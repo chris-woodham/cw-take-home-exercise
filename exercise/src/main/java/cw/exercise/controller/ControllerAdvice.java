@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import cw.exercise.exceptions.InvalidAnswersException;
 import cw.exercise.exceptions.TreatmentNotFoundException;
 import cw.exercise.exceptions.UnableToPrescribeTreatmentException;
 
@@ -22,5 +23,11 @@ public class ControllerAdvice {
     String unableToPrescribeTreatmentExceptionHandler(UnableToPrescribeTreatmentException exception) {
         return "Apologies, there is currently an error in our system for this treatment meaning we cannot prescribe it. We will rectify this issue as quickly as we can";
     }
+
+    @ExceptionHandler(InvalidAnswersException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    String invalidAnswersExceptionHandler(InvalidAnswersException exception) {
+        return exception.getMessage();
+    } 
 
 }

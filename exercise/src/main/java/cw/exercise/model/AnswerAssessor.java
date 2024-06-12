@@ -1,5 +1,6 @@
 package cw.exercise.model;
 
+import cw.exercise.exceptions.InvalidAnswersException;
 import cw.exercise.exceptions.InvalidTreatmentRiskException;
 
 public class AnswerAssessor {
@@ -12,6 +13,15 @@ public class AnswerAssessor {
     private static int HIGH_RISK_MAYBE_THRESHOLD = 0;
 
     public static AssessmentOutcome assess(Treatment treatment, Answers answers) throws InvalidTreatmentRiskException {
+
+        if (answers.getAnswers().size() != treatment.getConsultationQuestions().getQuestions().size()) {
+            throw new InvalidAnswersException("Error, must provide one answer for each individual question");
+        }
+        for (String answer : answers.getAnswers()) {
+            if (!(answer.toUpperCase().equals("NO") || answer.toUpperCase().equals("YES"))) {
+                throw new InvalidAnswersException("Error, all answers must be either \"YES\" or \"NO\"");
+            } 
+        }
         
         int numberNoAnswers = getNumberNoAnswers(answers);
         TreatmentRisk treatmentRisk = treatment.getTreatmentRisk();
